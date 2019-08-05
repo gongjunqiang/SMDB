@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SMDB
 {
-    public partial class Form1 : Form
+    public partial class FrmAttendanceQuery : Form
     {
-        public Form1()
+        public FrmAttendanceQuery()
         {
             InitializeComponent();
         }
