@@ -56,8 +56,28 @@
             this.lblVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnChangeAccount = new System.Windows.Forms.Button();
+            this.btnModifyPwd = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnStuManage = new System.Windows.Forms.Button();
+            this.btnScoreQuery = new System.Windows.Forms.Button();
+            this.btnCard = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnGoXiketang = new System.Windows.Forms.Button();
+            this.btnAttendanceQuery = new System.Windows.Forms.Button();
+            this.btnScoreAnalasys = new System.Windows.Forms.Button();
+            this.btnImportStu = new System.Windows.Forms.Button();
+            this.btnAddStu = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -89,19 +109,19 @@
             // 
             this.tmiModifyPwd.Image = ((System.Drawing.Image)(resources.GetObject("tmiModifyPwd.Image")));
             this.tmiModifyPwd.Name = "tmiModifyPwd";
-            this.tmiModifyPwd.Size = new System.Drawing.Size(180, 22);
+            this.tmiModifyPwd.Size = new System.Drawing.Size(140, 22);
             this.tmiModifyPwd.Text = "密码修改(&C)";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(137, 6);
             // 
             // tmiClose
             // 
             this.tmiClose.Image = ((System.Drawing.Image)(resources.GetObject("tmiClose.Image")));
             this.tmiClose.Name = "tmiClose";
-            this.tmiClose.Size = new System.Drawing.Size(180, 22);
+            this.tmiClose.Size = new System.Drawing.Size(140, 22);
             this.tmiClose.Text = "退出(&E)";
             // 
             // 学员管理ToolStripMenuItem
@@ -119,26 +139,26 @@
             // 
             this.tsmiAddStudent.Image = ((System.Drawing.Image)(resources.GetObject("tsmiAddStudent.Image")));
             this.tsmiAddStudent.Name = "tsmiAddStudent";
-            this.tsmiAddStudent.Size = new System.Drawing.Size(180, 22);
+            this.tsmiAddStudent.Size = new System.Drawing.Size(166, 22);
             this.tsmiAddStudent.Text = "添加学员(&A)";
             // 
             // tsmi_Import
             // 
             this.tsmi_Import.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Import.Image")));
             this.tsmi_Import.Name = "tsmi_Import";
-            this.tsmi_Import.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_Import.Size = new System.Drawing.Size(166, 22);
             this.tsmi_Import.Text = "批量导入学员";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(163, 6);
             // 
             // tsmiManageStudent
             // 
             this.tsmiManageStudent.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageStudent.Image")));
             this.tsmiManageStudent.Name = "tsmiManageStudent";
-            this.tsmiManageStudent.Size = new System.Drawing.Size(180, 22);
+            this.tsmiManageStudent.Size = new System.Drawing.Size(166, 22);
             this.tsmiManageStudent.Text = "学员信息管理(&Q)";
             // 
             // 成绩管理ToolStripMenuItem
@@ -184,19 +204,19 @@
             // 
             this.tsmi_Card.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_Card.Image")));
             this.tsmi_Card.Name = "tsmi_Card";
-            this.tsmi_Card.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_Card.Size = new System.Drawing.Size(140, 22);
             this.tsmi_Card.Text = "考勤打卡(&R)";
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(137, 6);
             // 
             // tsmi_AQuery
             // 
             this.tsmi_AQuery.Image = ((System.Drawing.Image)(resources.GetObject("tsmi_AQuery.Image")));
             this.tsmi_AQuery.Name = "tsmi_AQuery";
-            this.tsmi_AQuery.Size = new System.Drawing.Size(180, 22);
+            this.tsmi_AQuery.Size = new System.Drawing.Size(140, 22);
             this.tsmi_AQuery.Text = "考勤查询";
             // 
             // 帮助HToolStripMenuItem
@@ -266,11 +286,228 @@
             this.lblCurrentUser.Size = new System.Drawing.Size(48, 17);
             this.lblCurrentUser.Text = "王晓军]";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.btnChangeAccount);
+            this.splitContainer1.Panel1.Controls.Add(this.btnModifyPwd);
+            this.splitContainer1.Panel1.Controls.Add(this.btnExit);
+            this.splitContainer1.Panel1.Controls.Add(this.btnStuManage);
+            this.splitContainer1.Panel1.Controls.Add(this.btnScoreQuery);
+            this.splitContainer1.Panel1.Controls.Add(this.btnCard);
+            this.splitContainer1.Panel1.Controls.Add(this.btnUpdate);
+            this.splitContainer1.Panel1.Controls.Add(this.btnGoXiketang);
+            this.splitContainer1.Panel1.Controls.Add(this.btnAttendanceQuery);
+            this.splitContainer1.Panel1.Controls.Add(this.btnScoreAnalasys);
+            this.splitContainer1.Panel1.Controls.Add(this.btnImportStu);
+            this.splitContainer1.Panel1.Controls.Add(this.btnAddStu);
+            this.splitContainer1.Panel1.Controls.Add(this.monthCalendar1);
+            this.splitContainer1.Size = new System.Drawing.Size(1264, 682);
+            this.splitContainer1.SplitterDistance = 253;
+            this.splitContainer1.TabIndex = 8;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(17, 30);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Location = new System.Drawing.Point(32, 560);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 3);
+            this.label3.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(32, 481);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(184, 3);
+            this.label2.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(32, 408);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 3);
+            this.label1.TabIndex = 4;
+            // 
+            // btnChangeAccount
+            // 
+            this.btnChangeAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeAccount.Image")));
+            this.btnChangeAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangeAccount.Location = new System.Drawing.Point(131, 424);
+            this.btnChangeAccount.Name = "btnChangeAccount";
+            this.btnChangeAccount.Size = new System.Drawing.Size(82, 41);
+            this.btnChangeAccount.TabIndex = 6;
+            this.btnChangeAccount.Text = "账号切换";
+            this.btnChangeAccount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnChangeAccount.UseVisualStyleBackColor = true;
+            // 
+            // btnModifyPwd
+            // 
+            this.btnModifyPwd.Image = ((System.Drawing.Image)(resources.GetObject("btnModifyPwd.Image")));
+            this.btnModifyPwd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModifyPwd.Location = new System.Drawing.Point(32, 424);
+            this.btnModifyPwd.Name = "btnModifyPwd";
+            this.btnModifyPwd.Size = new System.Drawing.Size(82, 41);
+            this.btnModifyPwd.TabIndex = 7;
+            this.btnModifyPwd.Text = "密码修改";
+            this.btnModifyPwd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModifyPwd.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(131, 608);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(82, 41);
+            this.btnExit.TabIndex = 8;
+            this.btnExit.Text = "退出系统";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnStuManage
+            // 
+            this.btnStuManage.BackColor = System.Drawing.SystemColors.Control;
+            this.btnStuManage.ForeColor = System.Drawing.Color.Black;
+            this.btnStuManage.Image = ((System.Drawing.Image)(resources.GetObject("btnStuManage.Image")));
+            this.btnStuManage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStuManage.Location = new System.Drawing.Point(134, 236);
+            this.btnStuManage.Name = "btnStuManage";
+            this.btnStuManage.Size = new System.Drawing.Size(82, 41);
+            this.btnStuManage.TabIndex = 9;
+            this.btnStuManage.Text = "学员管理";
+            this.btnStuManage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnStuManage.UseVisualStyleBackColor = false;
+            // 
+            // btnScoreQuery
+            // 
+            this.btnScoreQuery.BackColor = System.Drawing.SystemColors.Control;
+            this.btnScoreQuery.ForeColor = System.Drawing.Color.Black;
+            this.btnScoreQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnScoreQuery.Image")));
+            this.btnScoreQuery.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScoreQuery.Location = new System.Drawing.Point(32, 348);
+            this.btnScoreQuery.Name = "btnScoreQuery";
+            this.btnScoreQuery.Size = new System.Drawing.Size(82, 41);
+            this.btnScoreQuery.TabIndex = 10;
+            this.btnScoreQuery.Text = "成绩浏览";
+            this.btnScoreQuery.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnScoreQuery.UseVisualStyleBackColor = false;
+            // 
+            // btnCard
+            // 
+            this.btnCard.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCard.ForeColor = System.Drawing.Color.Black;
+            this.btnCard.Image = ((System.Drawing.Image)(resources.GetObject("btnCard.Image")));
+            this.btnCard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCard.Location = new System.Drawing.Point(32, 292);
+            this.btnCard.Name = "btnCard";
+            this.btnCard.Size = new System.Drawing.Size(82, 41);
+            this.btnCard.TabIndex = 11;
+            this.btnCard.Text = "考勤打卡";
+            this.btnCard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCard.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(32, 500);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(82, 41);
+            this.btnUpdate.TabIndex = 12;
+            this.btnUpdate.Text = "系统升级";
+            this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            // 
+            // btnGoXiketang
+            // 
+            this.btnGoXiketang.Image = ((System.Drawing.Image)(resources.GetObject("btnGoXiketang.Image")));
+            this.btnGoXiketang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGoXiketang.Location = new System.Drawing.Point(32, 608);
+            this.btnGoXiketang.Name = "btnGoXiketang";
+            this.btnGoXiketang.Size = new System.Drawing.Size(82, 41);
+            this.btnGoXiketang.TabIndex = 13;
+            this.btnGoXiketang.Text = "访问官网";
+            this.btnGoXiketang.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGoXiketang.UseVisualStyleBackColor = true;
+            // 
+            // btnAttendanceQuery
+            // 
+            this.btnAttendanceQuery.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAttendanceQuery.ForeColor = System.Drawing.Color.Black;
+            this.btnAttendanceQuery.Image = ((System.Drawing.Image)(resources.GetObject("btnAttendanceQuery.Image")));
+            this.btnAttendanceQuery.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAttendanceQuery.Location = new System.Drawing.Point(132, 292);
+            this.btnAttendanceQuery.Name = "btnAttendanceQuery";
+            this.btnAttendanceQuery.Size = new System.Drawing.Size(82, 41);
+            this.btnAttendanceQuery.TabIndex = 14;
+            this.btnAttendanceQuery.Text = "考勤查询";
+            this.btnAttendanceQuery.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAttendanceQuery.UseVisualStyleBackColor = false;
+            // 
+            // btnScoreAnalasys
+            // 
+            this.btnScoreAnalasys.BackColor = System.Drawing.SystemColors.Control;
+            this.btnScoreAnalasys.ForeColor = System.Drawing.Color.Black;
+            this.btnScoreAnalasys.Image = ((System.Drawing.Image)(resources.GetObject("btnScoreAnalasys.Image")));
+            this.btnScoreAnalasys.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScoreAnalasys.Location = new System.Drawing.Point(132, 348);
+            this.btnScoreAnalasys.Name = "btnScoreAnalasys";
+            this.btnScoreAnalasys.Size = new System.Drawing.Size(82, 41);
+            this.btnScoreAnalasys.TabIndex = 15;
+            this.btnScoreAnalasys.Text = "成绩分析";
+            this.btnScoreAnalasys.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnScoreAnalasys.UseVisualStyleBackColor = false;
+            // 
+            // btnImportStu
+            // 
+            this.btnImportStu.BackColor = System.Drawing.SystemColors.Control;
+            this.btnImportStu.Image = ((System.Drawing.Image)(resources.GetObject("btnImportStu.Image")));
+            this.btnImportStu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImportStu.Location = new System.Drawing.Point(134, 500);
+            this.btnImportStu.Name = "btnImportStu";
+            this.btnImportStu.Size = new System.Drawing.Size(82, 41);
+            this.btnImportStu.TabIndex = 16;
+            this.btnImportStu.Text = "批量导入";
+            this.btnImportStu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImportStu.UseVisualStyleBackColor = false;
+            // 
+            // btnAddStu
+            // 
+            this.btnAddStu.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAddStu.ForeColor = System.Drawing.Color.Black;
+            this.btnAddStu.Image = ((System.Drawing.Image)(resources.GetObject("btnAddStu.Image")));
+            this.btnAddStu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddStu.Location = new System.Drawing.Point(32, 236);
+            this.btnAddStu.Name = "btnAddStu";
+            this.btnAddStu.Size = new System.Drawing.Size(82, 41);
+            this.btnAddStu.TabIndex = 17;
+            this.btnAddStu.Text = "添加学员";
+            this.btnAddStu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddStu.UseVisualStyleBackColor = false;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 729);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -281,6 +518,9 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +555,22 @@
         private System.Windows.Forms.ToolStripStatusLabel lblVersion;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblCurrentUser;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnChangeAccount;
+        private System.Windows.Forms.Button btnModifyPwd;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnStuManage;
+        private System.Windows.Forms.Button btnScoreQuery;
+        private System.Windows.Forms.Button btnCard;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnGoXiketang;
+        private System.Windows.Forms.Button btnAttendanceQuery;
+        private System.Windows.Forms.Button btnScoreAnalasys;
+        private System.Windows.Forms.Button btnImportStu;
+        private System.Windows.Forms.Button btnAddStu;
     }
 }

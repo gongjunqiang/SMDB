@@ -15,6 +15,7 @@ namespace SMDB
         public FrmMain()
         {
             InitializeComponent();
+            this.lblCurrentUser.Text = Program.admins.AdminName + "]";
         }
     }
 }

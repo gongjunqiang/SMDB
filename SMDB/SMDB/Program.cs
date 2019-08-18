@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
 
 namespace SMDB
 {
@@ -16,7 +17,19 @@ namespace SMDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmAbout());
+            FrmUserLogin frmUserLogin = new FrmUserLogin();
+
+            DialogResult dialogResult = frmUserLogin.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                Application.Run(new FrmMain());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
+
+        public static Admins admins = null;
     }
 }

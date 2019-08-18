@@ -157,5 +157,19 @@
   <ItemGroup>
     <Folder Include="资源文件\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomComponent\CustomComponent.csproj">
+      <Project>{B70AA544-A32F-4B8D-A323-9E0C67D43BB6}</Project>
+      <Name>CustomComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{9d27922f-3d92-4fe9-bbce-fd17a12b1e6c}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{b6b8ac5f-217c-4ef4-8e4b-51403daa9d56}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

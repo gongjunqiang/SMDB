@@ -17,7 +17,7 @@ namespace DAL
         //定义数据库连接字符串
         private static readonly string connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
 
-
+        private static readonly string a = @"Server=DESKTOP-DKRA2O6\SQLEXPRESS;Database=SMDB.Uid=sa;Pwd=195814";
         /// <summary>
         /// 执行insert、delete、update等操作
         /// </summary>

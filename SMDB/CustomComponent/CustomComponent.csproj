@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D27922F-3D92-4FE9-BBCE-FD17A12B1E6C}</ProjectGuid>
+    <ProjectGuid>{B70AA544-A32F-4B8D-A323-9E0C67D43BB6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAL</RootNamespace>
-    <AssemblyName>DAL</AssemblyName>
+    <RootNamespace>CustomComponent</RootNamespace>
+    <AssemblyName>CustomComponent</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,8 +32,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,20 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminsService.cs" />
-    <Compile Include="AttendanceService.cs" />
-    <Compile Include="Helper\OledbHelper.cs" />
-    <Compile Include="ScoreListService.cs" />
-    <Compile Include="Helper\SQLHelper.cs" />
-    <Compile Include="StudentClassService.cs" />
-    <Compile Include="StudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TxtBoxExtend.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TxtBoxExtend.Designer.cs">
+      <DependentUpon>TxtBoxExtend.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{b6b8ac5f-217c-4ef4-8e4b-51403daa9d56}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="TxtBoxExtend.resx">
+      <DependentUpon>TxtBoxExtend.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
