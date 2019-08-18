@@ -17,9 +17,11 @@ namespace SMDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FrmUserLogin frmUserLogin = new FrmUserLogin();
 
+            //显示登录窗体
+            FrmUserLogin frmUserLogin = new FrmUserLogin();
             DialogResult dialogResult = frmUserLogin.ShowDialog();
+            //判断是否登录成功
             if (dialogResult == DialogResult.OK)
             {
                 Application.Run(new FrmMain());

@@ -35,8 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.txtAdminName = new CustomComponent.TxtBoxExtend(this.components);
             this.txtAdminPwd = new CustomComponent.TxtBoxExtend(this.components);
+            this.txtAdminName = new CustomComponent.TxtBoxExtend(this.components);
             this.SuspendLayout();
             // 
             // panel1
@@ -94,14 +94,6 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
-            // txtAdminName
-            // 
-            this.txtAdminName.Location = new System.Drawing.Point(340, 35);
-            this.txtAdminName.Name = "txtAdminName";
-            this.txtAdminName.Size = new System.Drawing.Size(113, 21);
-            this.txtAdminName.TabIndex = 7;
-            this.txtAdminName.Text = "龚均强";
-            // 
             // txtAdminPwd
             // 
             this.txtAdminPwd.Location = new System.Drawing.Point(341, 82);
@@ -110,6 +102,16 @@
             this.txtAdminPwd.TabIndex = 7;
             this.txtAdminPwd.Text = "195814";
             this.txtAdminPwd.UseSystemPasswordChar = true;
+            this.txtAdminPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtAdminPwd_KeyDown);
+            // 
+            // txtAdminName
+            // 
+            this.txtAdminName.Location = new System.Drawing.Point(340, 35);
+            this.txtAdminName.Name = "txtAdminName";
+            this.txtAdminName.Size = new System.Drawing.Size(113, 21);
+            this.txtAdminName.TabIndex = 7;
+            this.txtAdminName.Text = "龚均强";
+            this.txtAdminName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtAdminName_KeyDown);
             // 
             // FrmUserLogin
             // 

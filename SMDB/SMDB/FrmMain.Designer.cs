@@ -56,8 +56,7 @@
             this.lblVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,11 +72,12 @@
             this.btnScoreAnalasys = new System.Windows.Forms.Button();
             this.btnImportStu = new System.Windows.Forms.Button();
             this.btnAddStu = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,7 +92,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 25);
-            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 系统ToolStripMenuItem
@@ -286,39 +286,35 @@
             this.lblCurrentUser.Size = new System.Drawing.Size(48, 17);
             this.lblCurrentUser.Text = "王晓军]";
             // 
-            // splitContainer1
+            // splitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
-            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer.Name = "splitContainer";
             // 
-            // splitContainer1.Panel1
+            // splitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.btnChangeAccount);
-            this.splitContainer1.Panel1.Controls.Add(this.btnModifyPwd);
-            this.splitContainer1.Panel1.Controls.Add(this.btnExit);
-            this.splitContainer1.Panel1.Controls.Add(this.btnStuManage);
-            this.splitContainer1.Panel1.Controls.Add(this.btnScoreQuery);
-            this.splitContainer1.Panel1.Controls.Add(this.btnCard);
-            this.splitContainer1.Panel1.Controls.Add(this.btnUpdate);
-            this.splitContainer1.Panel1.Controls.Add(this.btnGoXiketang);
-            this.splitContainer1.Panel1.Controls.Add(this.btnAttendanceQuery);
-            this.splitContainer1.Panel1.Controls.Add(this.btnScoreAnalasys);
-            this.splitContainer1.Panel1.Controls.Add(this.btnImportStu);
-            this.splitContainer1.Panel1.Controls.Add(this.btnAddStu);
-            this.splitContainer1.Panel1.Controls.Add(this.monthCalendar1);
-            this.splitContainer1.Size = new System.Drawing.Size(1264, 682);
-            this.splitContainer1.SplitterDistance = 253;
-            this.splitContainer1.TabIndex = 8;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(17, 30);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
+            this.splitContainer.Panel1.Controls.Add(this.label3);
+            this.splitContainer.Panel1.Controls.Add(this.label2);
+            this.splitContainer.Panel1.Controls.Add(this.label1);
+            this.splitContainer.Panel1.Controls.Add(this.btnChangeAccount);
+            this.splitContainer.Panel1.Controls.Add(this.btnModifyPwd);
+            this.splitContainer.Panel1.Controls.Add(this.btnExit);
+            this.splitContainer.Panel1.Controls.Add(this.btnStuManage);
+            this.splitContainer.Panel1.Controls.Add(this.btnScoreQuery);
+            this.splitContainer.Panel1.Controls.Add(this.btnCard);
+            this.splitContainer.Panel1.Controls.Add(this.btnUpdate);
+            this.splitContainer.Panel1.Controls.Add(this.btnGoXiketang);
+            this.splitContainer.Panel1.Controls.Add(this.btnAttendanceQuery);
+            this.splitContainer.Panel1.Controls.Add(this.btnScoreAnalasys);
+            this.splitContainer.Panel1.Controls.Add(this.btnImportStu);
+            this.splitContainer.Panel1.Controls.Add(this.btnAddStu);
+            this.splitContainer.Panel1.Controls.Add(this.monthCalendar1);
+            this.splitContainer.Size = new System.Drawing.Size(1264, 682);
+            this.splitContainer.SplitterDistance = 246;
+            this.splitContainer.TabIndex = 9;
             // 
             // label3
             // 
@@ -379,6 +375,7 @@
             this.btnExit.Text = "退出系统";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click_1);
             // 
             // btnStuManage
             // 
@@ -502,25 +499,34 @@
             this.btnAddStu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddStu.UseVisualStyleBackColor = false;
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(13, 30);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 729);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[学员信息管理系统]--最适合初学者学习的实践项目";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,7 +561,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lblVersion;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblCurrentUser;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
