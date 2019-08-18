@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
+    /// <summary>
+    /// 学生表数据访问类
+    /// </summary>
     public class StudentService
     {
     }

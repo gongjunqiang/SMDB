@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.OleDb;
+
 
 namespace DAL
 {
     /// <summary>
-    /// 打卡记录表访问类
+    /// 访问Access数据库通用访问类
     /// </summary>
-    public class AttendanceService
+    public class OledbHelper
     {
+
+
     }
 }

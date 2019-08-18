@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AdminsService.cs" />
     <Compile Include="AttendanceService.cs" />
+    <Compile Include="Helper\OledbHelper.cs" />
     <Compile Include="ScoreListService.cs" />
     <Compile Include="Helper\SQLHelper.cs" />
     <Compile Include="StudentClassService.cs" />
