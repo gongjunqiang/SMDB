@@ -109,6 +109,11 @@ namespace SMDB
 
             BtnLogin_Click(null, null);
         }
+
+        private void FrmUserLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmMain.userLogin = null;
+        }
         #endregion
         //键盘事件
 

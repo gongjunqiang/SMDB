@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModifyPwd));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
-            this.txtNewPwdConfirm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNewPwd = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtOldPwd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtOldPwd = new CustomComponent.TxtBoxExtend(this.components);
+            this.txtNewPwd = new CustomComponent.TxtBoxExtend(this.components);
+            this.txtNewPwdConfirm = new CustomComponent.TxtBoxExtend(this.components);
             this.SuspendLayout();
             // 
             // btnCancel
@@ -48,6 +49,7 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "取 消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnModify
             // 
@@ -58,14 +60,7 @@
             this.btnModify.TabIndex = 11;
             this.btnModify.Text = "确认修改";
             this.btnModify.UseVisualStyleBackColor = true;
-            // 
-            // txtNewPwdConfirm
-            // 
-            this.txtNewPwdConfirm.Location = new System.Drawing.Point(120, 80);
-            this.txtNewPwdConfirm.Name = "txtNewPwdConfirm";
-            this.txtNewPwdConfirm.Size = new System.Drawing.Size(120, 21);
-            this.txtNewPwdConfirm.TabIndex = 10;
-            this.txtNewPwdConfirm.UseSystemPasswordChar = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // label3
             // 
@@ -77,14 +72,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "新密码确认：";
             // 
-            // txtNewPwd
-            // 
-            this.txtNewPwd.Location = new System.Drawing.Point(120, 50);
-            this.txtNewPwd.Name = "txtNewPwd";
-            this.txtNewPwd.Size = new System.Drawing.Size(120, 21);
-            this.txtNewPwd.TabIndex = 9;
-            this.txtNewPwd.UseSystemPasswordChar = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -95,14 +82,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "新密码：";
             // 
-            // txtOldPwd
-            // 
-            this.txtOldPwd.Location = new System.Drawing.Point(120, 23);
-            this.txtOldPwd.Name = "txtOldPwd";
-            this.txtOldPwd.Size = new System.Drawing.Size(120, 21);
-            this.txtOldPwd.TabIndex = 7;
-            this.txtOldPwd.UseSystemPasswordChar = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -112,22 +91,45 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "原密码：";
             // 
+            // txtOldPwd
+            // 
+            this.txtOldPwd.Location = new System.Drawing.Point(120, 17);
+            this.txtOldPwd.Name = "txtOldPwd";
+            this.txtOldPwd.Size = new System.Drawing.Size(120, 21);
+            this.txtOldPwd.TabIndex = 13;
+            // 
+            // txtNewPwd
+            // 
+            this.txtNewPwd.Location = new System.Drawing.Point(120, 49);
+            this.txtNewPwd.Name = "txtNewPwd";
+            this.txtNewPwd.Size = new System.Drawing.Size(120, 21);
+            this.txtNewPwd.TabIndex = 13;
+            // 
+            // txtNewPwdConfirm
+            // 
+            this.txtNewPwdConfirm.Location = new System.Drawing.Point(120, 80);
+            this.txtNewPwdConfirm.Name = "txtNewPwdConfirm";
+            this.txtNewPwdConfirm.Size = new System.Drawing.Size(120, 21);
+            this.txtNewPwdConfirm.TabIndex = 13;
+            // 
             // FrmModifyPwd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(268, 173);
+            this.Controls.Add(this.txtNewPwdConfirm);
+            this.Controls.Add(this.txtNewPwd);
+            this.Controls.Add(this.txtOldPwd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnModify);
-            this.Controls.Add(this.txtNewPwdConfirm);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtNewPwd);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtOldPwd);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmModifyPwd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改登录密码";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmModifyPwd_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,11 +139,11 @@
 
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnModify;
-        private System.Windows.Forms.TextBox txtNewPwdConfirm;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNewPwd;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtOldPwd;
         private System.Windows.Forms.Label label1;
+        private CustomComponent.TxtBoxExtend txtOldPwd;
+        private CustomComponent.TxtBoxExtend txtNewPwd;
+        private CustomComponent.TxtBoxExtend txtNewPwdConfirm;
     }
 }

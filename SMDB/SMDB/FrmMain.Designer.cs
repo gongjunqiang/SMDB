@@ -351,6 +351,7 @@
             this.btnChangeAccount.Text = "账号切换";
             this.btnChangeAccount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnChangeAccount.UseVisualStyleBackColor = true;
+            this.btnChangeAccount.Click += new System.EventHandler(this.BtnChangeAccount_Click);
             // 
             // btnModifyPwd
             // 
@@ -363,6 +364,7 @@
             this.btnModifyPwd.Text = "密码修改";
             this.btnModifyPwd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModifyPwd.UseVisualStyleBackColor = true;
+            this.btnModifyPwd.Click += new System.EventHandler(this.BtnModifyPwd_Click);
             // 
             // btnExit
             // 
@@ -375,7 +377,7 @@
             this.btnExit.Text = "退出系统";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click_1);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnStuManage
             // 
@@ -390,6 +392,7 @@
             this.btnStuManage.Text = "学员管理";
             this.btnStuManage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnStuManage.UseVisualStyleBackColor = false;
+            this.btnStuManage.Click += new System.EventHandler(this.BtnStuManage_Click);
             // 
             // btnScoreQuery
             // 
@@ -404,6 +407,7 @@
             this.btnScoreQuery.Text = "成绩浏览";
             this.btnScoreQuery.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnScoreQuery.UseVisualStyleBackColor = false;
+            this.btnScoreQuery.Click += new System.EventHandler(this.BtnScoreQuery_Click);
             // 
             // btnCard
             // 
@@ -418,6 +422,7 @@
             this.btnCard.Text = "考勤打卡";
             this.btnCard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCard.UseVisualStyleBackColor = false;
+            this.btnCard.Click += new System.EventHandler(this.BtnCard_Click);
             // 
             // btnUpdate
             // 
@@ -457,6 +462,7 @@
             this.btnAttendanceQuery.Text = "考勤查询";
             this.btnAttendanceQuery.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAttendanceQuery.UseVisualStyleBackColor = false;
+            this.btnAttendanceQuery.Click += new System.EventHandler(this.BtnAttendanceQuery_Click);
             // 
             // btnScoreAnalasys
             // 
@@ -471,6 +477,7 @@
             this.btnScoreAnalasys.Text = "成绩分析";
             this.btnScoreAnalasys.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnScoreAnalasys.UseVisualStyleBackColor = false;
+            this.btnScoreAnalasys.Click += new System.EventHandler(this.BtnScoreAnalasys_Click);
             // 
             // btnImportStu
             // 
@@ -484,6 +491,7 @@
             this.btnImportStu.Text = "批量导入";
             this.btnImportStu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImportStu.UseVisualStyleBackColor = false;
+            this.btnImportStu.Click += new System.EventHandler(this.BtnImportStu_Click);
             // 
             // btnAddStu
             // 
@@ -498,6 +506,7 @@
             this.btnAddStu.Text = "添加学员";
             this.btnAddStu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddStu.UseVisualStyleBackColor = false;
+            this.btnAddStu.Click += new System.EventHandler(this.BtnAddStu_Click);
             // 
             // monthCalendar1
             // 
@@ -520,6 +529,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[学员信息管理系统]--最适合初学者学习的实践项目";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

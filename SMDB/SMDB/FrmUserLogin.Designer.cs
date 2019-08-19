@@ -131,6 +131,7 @@
             this.Name = "FrmUserLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "学员管理系统--[用户登录]";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmUserLogin_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,5 +49,24 @@ namespace DAL
             return admins;
         }
 
+        /// <summary>
+        /// 管理员密码修改
+        /// </summary>
+        /// <param name="admins"></param>
+        /// <returns></returns>
+        public int UpdatePwd(Admins admins)
+        {
+            string sql = "update Admins set LoginPwd={0} where AdminName='{1}' and LoginId='{2}'";
+            sql = string.Format(sql, admins.LoginPwd, admins.AdminName, admins.LoginId);
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("修改密码出现数据库访问错误！",ex);
+            }
+        }
     }
 }

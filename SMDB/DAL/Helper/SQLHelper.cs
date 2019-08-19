@@ -104,6 +104,7 @@ namespace DAL
             SqlCommand cmd = new SqlCommand(sql, conn);
             //创建数据适配器对象
             SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //创建一个内存数据集
             DataSet ds = new DataSet();
 
             try
