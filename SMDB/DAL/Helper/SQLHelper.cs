@@ -27,6 +27,7 @@ namespace DAL
         public static int Update(string sql, SqlParameter[] sqlParameters = null)
         {
             SqlConnection conn = new SqlConnection(connString);
+            var q=conn.State == ConnectionState.Open;
             SqlCommand cmd = new SqlCommand(sql, conn);
             if (sqlParameters != null)
             {
