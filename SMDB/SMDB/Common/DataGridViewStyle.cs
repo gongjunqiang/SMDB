@@ -15,7 +15,7 @@ namespace SMDB
         /// <summary>
         /// 普通的样式
         /// </summary>        
-        public void DgvStyle1(DataGridView dgv)
+        public  static void DgvStyle1(DataGridView dgv)
         {
             //奇数行的背景色
             dgv.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -36,7 +36,7 @@ namespace SMDB
         /// 凹凸样式
         /// </summary>
         /// 需要手动设置this.RowTemplate.DividerHeight = 2;    
-        public void DgvStyle2(DataGridView dgv)
+        public static void DgvStyle2(DataGridView dgv)
         {
             //奇数行的背景色
             // this.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -62,7 +62,7 @@ namespace SMDB
         /// <summary>
         /// 华丽的样式
         /// </summary>
-        public void DgvStyle3(DataGridView dgv)
+        public static void DgvStyle3(DataGridView dgv)
         {
             //未显示数据时的背景色
             dgv.BackgroundColor = System.Drawing.SystemColors.ButtonFace;

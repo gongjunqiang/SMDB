@@ -14,7 +14,7 @@ namespace SMDB
     public class SerializeObjectToString
     {
         //将Object类型对象(注：必须是可序列化的对象)转换为二进制序列字符串
-        public string SerializeObject(object obj)
+        public static string SerializeObject(object obj)
         {
             IFormatter formatter = new BinaryFormatter();
             string result = string.Empty;

@@ -45,6 +45,7 @@
     <Compile Include="Attendance.cs" />
     <Compile Include="ScoreList.cs" />
     <Compile Include="StudentClass.cs" />
+    <Compile Include="StudentExt.cs" />
     <Compile Include="Students.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

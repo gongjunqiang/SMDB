@@ -113,7 +113,7 @@
             this.lblBirthday.Name = "lblBirthday";
             this.lblBirthday.Size = new System.Drawing.Size(132, 23);
             this.lblBirthday.TabIndex = 41;
-            this.lblBirthday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBirthday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblClass
             // 
@@ -124,7 +124,7 @@
             this.lblClass.Name = "lblClass";
             this.lblClass.Size = new System.Drawing.Size(100, 23);
             this.lblClass.TabIndex = 40;
-            this.lblClass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblClass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblGender
             // 
@@ -135,7 +135,7 @@
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(100, 23);
             this.lblGender.TabIndex = 46;
-            this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblStudentName
             // 
@@ -146,7 +146,7 @@
             this.lblStudentName.Name = "lblStudentName";
             this.lblStudentName.Size = new System.Drawing.Size(132, 23);
             this.lblStudentName.TabIndex = 39;
-            this.lblStudentName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStudentName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnClose
             // 
@@ -156,6 +156,7 @@
             this.btnClose.TabIndex = 38;
             this.btnClose.Text = "关闭窗口";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // label8
             // 
@@ -254,7 +255,9 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmStudentInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "当前学员详细信息";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmStudentInfo_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pbStu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

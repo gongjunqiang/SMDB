@@ -109,6 +109,7 @@
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(142, 21);
             this.txtStudentName.TabIndex = 0;
+            this.txtStudentName.Text = "六阿旭";
             // 
             // label1
             // 
@@ -155,6 +156,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(544, 21);
             this.txtAddress.TabIndex = 8;
+            this.txtAddress.Text = "红红袜小区";
             // 
             // label6
             // 
@@ -193,6 +195,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(167, 21);
             this.txtPhoneNumber.TabIndex = 7;
+            this.txtPhoneNumber.Text = "18408230331";
             // 
             // label5
             // 
@@ -210,6 +213,7 @@
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(143, 21);
             this.txtCardNo.TabIndex = 6;
+            this.txtCardNo.Text = "261879";
             // 
             // label8
             // 
@@ -244,6 +248,7 @@
             this.txtStudentIdNo.Name = "txtStudentIdNo";
             this.txtStudentIdNo.Size = new System.Drawing.Size(276, 21);
             this.txtStudentIdNo.TabIndex = 5;
+            this.txtStudentIdNo.Text = "510722199304261879";
             // 
             // label4
             // 
@@ -412,6 +417,7 @@
             this.dgvStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudentList.Size = new System.Drawing.Size(942, 227);
             this.dgvStudentList.TabIndex = 111;
+            this.dgvStudentList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvStudentList_RowPostPaint);
             // 
             // label9
             // 
