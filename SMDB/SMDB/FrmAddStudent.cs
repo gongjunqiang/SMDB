@@ -56,5 +56,50 @@ namespace SMDB
         {
             this.pbStu.Image = null;
         }
+
+        //添加学员   
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            #region 数据验证
+            if (this.txtStudentName.Text.Trim().Length == 0)
+            {      
+                MessageBox.Show("学生姓名不能为空!","提示信息");
+                return;
+            }
+
+            if (this.rdoFemale.Checked==false && this.rdoMale.Checked == false)
+            {
+                MessageBox.Show("请选择性别!", "提示信息");
+                return;
+            }
+
+            if (this.cboClassName.SelectedIndex==-1)
+            {
+                MessageBox.Show("请选择班级!", "提示信息");
+                return;
+            }
+
+            var age = DateTime.Now.Year - Convert.ToDateTime(this.dtpBirthday.Text).Year;
+
+            if (age < 18 || age > 35)
+            {
+                MessageBox.Show("年龄必须在18到35之间!", "提示信息");
+                return;
+            }
+
+            if (!DataValidate.IsIdentityCard(this.txtStudentIdNo.Text.Trim()))
+            {
+                MessageBox.Show("身份证号不符合要求!", "提示信息");
+                this.txtStudentIdNo.SelectAll();
+                this.txtStudentIdNo.Focus();
+                return;
+            }
+
+            //验证身份证号与出生日期是否一致
+
+
+
+            #endregion
+        }
     }
 }
