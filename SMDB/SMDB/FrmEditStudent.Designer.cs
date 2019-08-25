@@ -54,6 +54,7 @@
             this.btnChoseImage = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.btnModify = new System.Windows.Forms.Button();
+            this.btnClearImage = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbStu)).BeginInit();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             this.btnClose.Text = "关闭窗口";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // txtStudentId
             // 
@@ -273,12 +275,13 @@
             // 
             // btnChoseImage
             // 
-            this.btnChoseImage.Location = new System.Drawing.Point(66, 288);
+            this.btnChoseImage.Location = new System.Drawing.Point(25, 298);
             this.btnChoseImage.Name = "btnChoseImage";
-            this.btnChoseImage.Size = new System.Drawing.Size(98, 35);
+            this.btnChoseImage.Size = new System.Drawing.Size(81, 35);
             this.btnChoseImage.TabIndex = 26;
             this.btnChoseImage.Text = "选择照片";
             this.btnChoseImage.UseVisualStyleBackColor = true;
+            this.btnChoseImage.Click += new System.EventHandler(this.BtnChoseImage_Click);
             // 
             // label9
             // 
@@ -303,6 +306,16 @@
             this.btnModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModify.UseVisualStyleBackColor = true;
             // 
+            // btnClearImage
+            // 
+            this.btnClearImage.Location = new System.Drawing.Point(133, 298);
+            this.btnClearImage.Name = "btnClearImage";
+            this.btnClearImage.Size = new System.Drawing.Size(81, 35);
+            this.btnClearImage.TabIndex = 26;
+            this.btnClearImage.Text = "清除照片";
+            this.btnClearImage.UseVisualStyleBackColor = true;
+            this.btnClearImage.Click += new System.EventHandler(this.BtnClearImage_Click);
+            // 
             // FrmEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -311,12 +324,16 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pbStu);
+            this.Controls.Add(this.btnClearImage);
             this.Controls.Add(this.btnChoseImage);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnModify);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmEditStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改学员信息";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmEditStudent_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbStu)).EndInit();
@@ -352,5 +369,6 @@
         private System.Windows.Forms.Button btnChoseImage;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnClearImage;
     }
 }

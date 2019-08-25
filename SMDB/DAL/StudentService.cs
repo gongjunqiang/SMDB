@@ -122,7 +122,7 @@ namespace DAL
         /// <returns></returns>
         public StudentExt GetStudebntByStudentId(int studentId)
         {
-            string sql = "select StudentId, StudentName, Gender, Birthday, StudentIdNo, CardNo, StuImage, PhoneNumber, StudentAddress, ClassName";
+            string sql = "select StudentId, StudentName, Gender, Birthday, StudentIdNo, CardNo, StuImage, PhoneNumber, StudentAddress, Students.ClassId,ClassName";
             sql += " from Students inner join StudentClass on Students.ClassId=StudentClass.ClassId";
             sql += " where StudentId=" + studentId;
             StudentExt studentInfo = null;
@@ -140,8 +140,9 @@ namespace DAL
                         StudentIdNo = reader["StudentIdNo"].ToString(),
                         PhoneNumber = reader["PhoneNumber"].ToString(),
                         CardNo = reader["CardNo"].ToString(),
-                        StuImage = reader["StuImage"].ToString(),
+                        StuImage = reader["StuImage"]==null?"":reader["StuImage"].ToString(),
                         StudentAddress = reader["StudentAddress"].ToString(),
+                        ClassId = Convert.ToInt32(reader["ClassId"]),
                         ClassName = reader["ClassName"].ToString(),
                     }; 
                 }

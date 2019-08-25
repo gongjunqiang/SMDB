@@ -15,9 +15,13 @@ namespace SMDB
 {
     public partial class FrmStudentInfo : Form
     {
-        public FrmStudentInfo(StudentExt studentExt )
+        public FrmStudentInfo()
         {
             InitializeComponent();
+        }
+        public FrmStudentInfo(StudentExt studentExt)
+            :this()
+        {
             this.lblStudentName.Text = studentExt.StudentName;
             this.lblGender.Text = studentExt.Gender;
             this.lblBirthday.Text = studentExt.Birthday.ToString("yyyyMMdd");
@@ -26,8 +30,8 @@ namespace SMDB
             this.lblCardNo.Text = studentExt.CardNo;
             this.lblPhoneNumber.Text = studentExt.PhoneNumber;
             this.lblAddress.Text = studentExt.StudentAddress;
-            //this.pbStu.Image = 
-
+            this.pbStu.Image = studentExt.StuImage.Length == 0 ? Image.FromFile("default.png"):
+                (Image)SerializeObjectToString.DeserializeObject(studentExt.StuImage);
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

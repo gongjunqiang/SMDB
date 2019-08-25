@@ -28,8 +28,6 @@ namespace SMDB
             this.dgvStudentList.AutoGenerateColumns = false;
             this.btnNameDESC.Enabled = false;
             this.btnStuIdDESC.Enabled = false;
-
-
         }
 
         /// <summary>
@@ -95,14 +93,19 @@ namespace SMDB
 
         //根据学号查询并显示学员信息
         public static FrmStudentInfo frmStudentInfo = null;
-
-
         private void BtnQueryById_Click(object sender, EventArgs e)
         {
 
             if (this.txtStudentId.Text.Trim().Length == 0)
             {
                 MessageBox.Show("请输入学员学号","提示信息") ;
+                return;
+            }
+            if (!DataValidate.IsInteger(this.txtStudentId.Text.Trim()))
+            {
+                MessageBox.Show("学号必须为整数！", "提示信息");
+                this.txtStudentId.Focus();
+                this.txtStudentId.SelectAll();
                 return;
             }
             int studentId = Convert.ToInt32(this.txtStudentId.Text.Trim());
@@ -123,12 +126,87 @@ namespace SMDB
                 frmStudentInfo.Activate();
                 frmStudentInfo.WindowState = FormWindowState.Normal;
             }
+        }
 
-          
+        #region 修改学员信息
+        public static FrmEditStudent frmEditStudent = null;
+        private void BtnEidt_Click(object sender, EventArgs e)
+        {
+            if (this.dgvStudentList.CurrentRow == null)
+            {
+                MessageBox.Show("请选择您需要修改的学员对象！", "提示信息");
+                return;
+            }
 
+            int studentId = Convert.ToInt32(this.dgvStudentList.CurrentRow.Cells["StudentId"].Value);
+            var studentInfo = studentService.GetStudebntByStudentId(studentId);
 
+            if (frmEditStudent == null)
+            {
+                frmEditStudent = new FrmEditStudent(studentInfo);
+                frmEditStudent.ShowDialog();
+            }
+            else
+            {
+                frmEditStudent.Activate();
+                frmEditStudent.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        //鼠标修改学员
+        private void TsmiModifyStu_Click(object sender, EventArgs e)
+        {
+            BtnEidt_Click(null, null);
+        }
+        #endregion
+        //双击显示学员信息
+        private void DgvStudentList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dgvStudentList.Rows.Count != 0)
+            {
+                int studentId = Convert.ToInt32(this.dgvStudentList.CurrentRow.Cells["StudentId"].Value);
+                var studentInfo = studentService.GetStudebntByStudentId(studentId);
+                if (frmStudentInfo == null)
+                {
+                    frmStudentInfo = new FrmStudentInfo(studentInfo);
+                    frmStudentInfo.ShowDialog();
+                }
+                else
+                {
+                    frmStudentInfo.Activate();
+                    frmStudentInfo.WindowState = FormWindowState.Normal;
+                }
+            }
+        }
+
+        //键盘KeyDown事件
+        private void TxtStudentId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (this.txtStudentId.Text.Trim().Length!=0&& e.KeyValue == 13)
+            {
+                BtnQueryById_Click(null, null);
+            }
+
+            //if (e.KeyCode == Keys.Enter)
+            //{
+
+            //}
+        }
+
+        #region 删除学员
+        //删除学员
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
 
         }
+        //右键删除学员
+        private void TsmidDeleteStu_Click(object sender, EventArgs e)
+        {
+            BtnDel_Click(null,null);
+        }
+        #endregion
+
+
     }
 
     #region 实现排序

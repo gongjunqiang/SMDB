@@ -30,7 +30,7 @@ namespace SMDB
             return result;
         }
         //将二进制序列字符串转换为Object类型对象
-        public object DeserializeObject(string str)
+        public static object DeserializeObject(string str)
         {
             IFormatter formatter = new BinaryFormatter();
             //byte[] byt = Encoding.UTF8.GetBytes(str);
