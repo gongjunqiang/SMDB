@@ -16,7 +16,7 @@ namespace SMDB
     {
         private StudentClassService studentClassService = new StudentClassService();
         private StudentService studentService = new StudentService();
-        private List<StudentExt> studentList = null;
+        public static List<StudentExt> studentList = null;
         public FrmStudentManage()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace SMDB
             var classId = Convert.ToInt32(this.cboClass.SelectedValue);
             try
             {
-                this.studentList = studentService.GetStudentByClassId(classId);
+                studentList = studentService.GetStudentByClassId(classId);
                 if (studentList.Count==0)
                 {
                     MessageBox.Show("此班级暂无学生");
@@ -76,7 +76,7 @@ namespace SMDB
             {
                 return;
             }
-            this.studentList.Sort(new NameDesc());
+            studentList.Sort(new NameDesc());
             this.dgvStudentList.Refresh();
         }
 
@@ -87,7 +87,7 @@ namespace SMDB
             {
                 return;
             }
-            this.studentList.Sort(new StudentIdDesc());
+            studentList.Sort(new StudentIdDesc());
             this.dgvStudentList.Refresh();
         }
 
@@ -144,7 +144,16 @@ namespace SMDB
             if (frmEditStudent == null)
             {
                 frmEditStudent = new FrmEditStudent(studentInfo);
-                frmEditStudent.ShowDialog();
+                DialogResult result = frmEditStudent.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    //同步刷新
+                    //方法一：
+                    //BtnQuery_Click(null, null);
+                    //更新studentList，刷新dgv
+                    //方法二：
+                    this.dgvStudentList.Refresh(); 
+                }
             }
             else
             {

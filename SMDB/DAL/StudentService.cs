@@ -154,8 +154,69 @@ namespace DAL
                 throw new Exception("获取学生信息时数据库访问异常" + ex.Message);
             }
         }
+
+        /// <summary>
+        /// 修改学员信息
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        public int UpdateStudentInfo(Students student)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.Append("update Students set StudentName=@StudentName, Gender=@Gender, Birthday=@Birthday, StudentIdNo=@StudentIdNo,");
+            sql.Append(" CardNo=@CardNo, StuImage=@StuImage, PhoneNumber=@PhoneNumber, StudentAddress=@StudentAddress, ClassId=@ClassId,");
+            sql.Append(" Age=@Age where StudentId="+ student.StudentId);
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                new SqlParameter("@StudentName",student.StudentName),
+                new SqlParameter("@Gender",student.Gender),
+                new SqlParameter("@Birthday",student.Birthday.ToString("yyyyMMdd")),
+                new SqlParameter("@StudentIdNo",student.StudentIdNo),
+                new SqlParameter("@CardNo",student.CardNo),
+                new SqlParameter("@StuImage",student.StuImage),
+                new SqlParameter("@Age",student.Age),
+                new SqlParameter("@PhoneNumber",student.PhoneNumber),
+                new SqlParameter("@StudentAddress",student.StudentAddress),
+                new SqlParameter("@ClassId",student.ClassId),
+            };
+
+            try
+            {
+                return SQLHelper.Update(sql.ToString(), sqlParameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("跟新学员信息时数据库访问异常！" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 修改学员信息判断身份证号和其他学员是否重复
+        /// </summary>
+        /// <param name="studentIdNo">新的身份证号</param>
+        /// <param name="studentId">当前学员学号</param>
+        /// <returns></returns>
+        public bool IsIdNoExisted(string studentIdNo,int studentId)
+        {
+            string sql = $"select count(1) from Students where StudentIdNo={studentIdNo} and StudentId<>{studentId}";
+            var count = (int)SQLHelper.GetSignalResult(sql);
+            return count == 1 ? true : false;
+        }
+
+        /// <summary>
+        /// 修改学员信息判断考勤卡号和其他学员是否重复
+        /// </summary>
+        /// <param name="cardNo"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public bool IsCradNoExisted(string cardNo,int studentId)
+        {
+            string sql = $"select count(1) from Students where CardNo={cardNo} and StudentId<>{studentId}";
+            var count = (int)SQLHelper.GetSignalResult(sql);
+            return count == 1 ? true : false;
+        }
+
         #endregion
-
-
+        
     }
 }

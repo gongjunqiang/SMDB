@@ -305,6 +305,7 @@
             this.btnModify.Text = "提交修改";
             this.btnModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.BtnModify_Click);
             // 
             // btnClearImage
             // 
@@ -361,7 +362,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCardNo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtpBirthday;
+        public System.Windows.Forms.DateTimePicker dtpBirthday;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtStudentIdNo;
         private System.Windows.Forms.Label label10;
