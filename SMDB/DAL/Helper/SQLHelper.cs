@@ -41,7 +41,8 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("方法public static int Update执行异常", ex);
+                //throw new Exception("方法public static int Update执行异常：" + ex.Message);
+                throw ex;
             }
             finally
             {
@@ -66,7 +67,8 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("方法public static object GetSignalResult执行异常", ex);
+                //throw new Exception("方法public static object GetSignalResult执行异常", ex);
+                throw ex;
             }
             finally
             {
@@ -90,7 +92,12 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("方法public static SqlDataReader GetReader执行异常", ex);
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                //throw new Exception("方法public static SqlDataReader GetReader执行异常", ex);
+                throw ex;
             }
         }
 
@@ -98,8 +105,10 @@ namespace DAL
         /// 执行返回数据集的查询
         /// </summary>
         /// <param name="sql"></param>
+        /// <param name="tableName"></param>
+        /// <param name="isProcedure"></param>
         /// <returns></returns>
-        public static DataSet GetDataSet(string sql)
+        public static DataSet GetDataSet(string sql,string tableName = null,bool isProcedure=false)
         {
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(sql, conn);
@@ -111,12 +120,18 @@ namespace DAL
             try
             {
                 conn.Open();
+                if (tableName != null)
+                {
+                    da.Fill(ds, tableName);
+                }
+
                 da.Fill(ds);//使用数据适配器填充数据集
                 return ds;
             }
             catch (Exception ex)
             {
-                throw new Exception("方法public static DataSet GetDataSet执行异常", ex);
+                //throw new Exception("方法public static DataSet GetDataSet执行异常", ex);
+                throw ex;
             }
             finally
             {

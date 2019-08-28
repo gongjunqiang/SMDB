@@ -78,7 +78,7 @@ namespace DAL
         }
         #endregion
 
-        #region 学员管理
+        #region 学员信息查询
         /// <summary>
         /// 根据班级Id查询学生列表
         /// </summary>
@@ -154,7 +154,9 @@ namespace DAL
                 throw new Exception("获取学生信息时数据库访问异常" + ex.Message);
             }
         }
+        #endregion
 
+        #region 修改学员信息
         /// <summary>
         /// 修改学员信息
         /// </summary>
@@ -215,8 +217,67 @@ namespace DAL
             var count = (int)SQLHelper.GetSignalResult(sql);
             return count == 1 ? true : false;
         }
-
         #endregion
-        
+
+        #region 删除学员
+        /// <summary>
+        /// 根据学员对象发生异常
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public int DeleteStudent(int studentId)
+        {
+            var sql = "delete from Students where StudentId=" + studentId;
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 547)
+                {
+                    throw new Exception("该学员被其他数据表引用，不能直接删除");
+                }
+                else
+                {
+                    throw new Exception("删除学员时数据库操作异常：" + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 根据学员对象发生异常
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
+        public int DeleteStudent(Students student)
+        {
+            var sql = "delete from Students where StudentId=" + student.StudentId;
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 547)
+                {
+                    throw new Exception("该学员被其他数据表引用，不能直接删除");
+                }
+                else
+                {
+                    throw new Exception("删除学员时数据库操作异常：\r\n" + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
+
     }
 }

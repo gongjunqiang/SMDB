@@ -26,10 +26,12 @@ namespace SMDB
             this.cboClass.ValueMember = "ClassId";
             this.cboClass.SelectedIndex = -1;
             this.dgvStudentList.AutoGenerateColumns = false;
+            //禁用排序按钮
             this.btnNameDESC.Enabled = false;
             this.btnStuIdDESC.Enabled = false;
         }
 
+        #region 查询学员列表
         /// <summary>
         /// 根据班级查询学生列表
         /// </summary>
@@ -42,12 +44,15 @@ namespace SMDB
                 MessageBox.Show("请选择班级！","提示信息");
                 return;
             }
+
+            var a = this.cboClass.SelectedValue;
             var classId = Convert.ToInt32(this.cboClass.SelectedValue);
             try
             {
                 studentList = studentService.GetStudentByClassId(classId);
                 if (studentList.Count==0)
                 {
+                    this.dgvStudentList.DataSource = null;
                     MessageBox.Show("此班级暂无学生");
                     return;
                 }
@@ -90,7 +95,9 @@ namespace SMDB
             studentList.Sort(new StudentIdDesc());
             this.dgvStudentList.Refresh();
         }
+        #endregion
 
+        #region 显示学员信息
         //根据学号查询并显示学员信息
         public static FrmStudentInfo frmStudentInfo = null;
         private void BtnQueryById_Click(object sender, EventArgs e)
@@ -128,6 +135,42 @@ namespace SMDB
             }
         }
 
+        //双击显示学员信息
+        private void DgvStudentList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dgvStudentList.Rows.Count != 0)
+            {
+                int studentId = Convert.ToInt32(this.dgvStudentList.CurrentRow.Cells["StudentId"].Value);
+                var studentInfo = studentService.GetStudebntByStudentId(studentId);
+                if (frmStudentInfo == null)
+                {
+                    frmStudentInfo = new FrmStudentInfo(studentInfo);
+                    frmStudentInfo.ShowDialog();
+                }
+                else
+                {
+                    frmStudentInfo.Activate();
+                    frmStudentInfo.WindowState = FormWindowState.Normal;
+                }
+            }
+        }
+
+        //键盘KeyDown事件:显示学员信息
+        private void TxtStudentId_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (this.txtStudentId.Text.Trim().Length != 0 && e.KeyValue == 13)
+            {
+                BtnQueryById_Click(null, null);
+            }
+
+            //if (e.KeyCode == Keys.Enter)
+            //{
+
+            //}
+        }
+
+        #endregion
+
         #region 修改学员信息
         public static FrmEditStudent frmEditStudent = null;
         private void BtnEidt_Click(object sender, EventArgs e)
@@ -162,50 +205,62 @@ namespace SMDB
             }
         }
 
-        //鼠标修改学员
+        //鼠标右键修改学员信息
         private void TsmiModifyStu_Click(object sender, EventArgs e)
         {
             BtnEidt_Click(null, null);
         }
         #endregion
-        //双击显示学员信息
-        private void DgvStudentList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (this.dgvStudentList.Rows.Count != 0)
-            {
-                int studentId = Convert.ToInt32(this.dgvStudentList.CurrentRow.Cells["StudentId"].Value);
-                var studentInfo = studentService.GetStudebntByStudentId(studentId);
-                if (frmStudentInfo == null)
-                {
-                    frmStudentInfo = new FrmStudentInfo(studentInfo);
-                    frmStudentInfo.ShowDialog();
-                }
-                else
-                {
-                    frmStudentInfo.Activate();
-                    frmStudentInfo.WindowState = FormWindowState.Normal;
-                }
-            }
-        }
 
-        //键盘KeyDown事件
-        private void TxtStudentId_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (this.txtStudentId.Text.Trim().Length!=0&& e.KeyValue == 13)
-            {
-                BtnQueryById_Click(null, null);
-            }
-
-            //if (e.KeyCode == Keys.Enter)
-            //{
-
-            //}
-        }
+       
 
         #region 删除学员
         //删除学员
         private void BtnDel_Click(object sender, EventArgs e)
         {
+            #region 删除验证
+            if (this.dgvStudentList.RowCount == 0)
+            {
+                MessageBox.Show("没有需要删除的学员对象！", "删除提示");
+                return;
+            }
+            if (this.dgvStudentList.CurrentRow == null)
+            {
+                MessageBox.Show("请选择需要删除的学员！", "删除提示");
+                return;
+            }
+            #endregion
+
+            #region 后台调用
+            DialogResult dialogResult = MessageBox.Show("是否确认删除?", "删除提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+            Students student = new Students
+            {
+                StudentId = Convert.ToInt32(this.dgvStudentList.CurrentRow.Cells["StudentId"].Value)
+            };
+            try
+            {
+                var deleteCount = studentService.DeleteStudent(student);
+                if (deleteCount == 1)
+                {
+                    //刷新列表
+                    //BtnQuery_Click(null, null);
+
+                    studentList.Remove(studentList.First(o => o.StudentId == student.StudentId));
+                    this.dgvStudentList.DataSource = null;
+                    this.dgvStudentList.DataSource = studentList;
+                    this.dgvStudentList.Refresh();
+                    MessageBox.Show("学员删除成功！", "删除提示");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("删除学员异常：" + ex.Message,"提示信息");
+            }
+            #endregion
 
         }
         //右键删除学员
