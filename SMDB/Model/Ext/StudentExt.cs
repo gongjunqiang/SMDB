@@ -14,5 +14,7 @@ namespace Model
 
         public int SQLServerDB { get; set; }
 
+        public DateTime DTime { get; set; }
+
     }
 }

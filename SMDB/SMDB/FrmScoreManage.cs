@@ -28,28 +28,48 @@ namespace SMDB
             //将下拉框的事件关联
             this.cboClass.SelectedIndexChanged += new System.EventHandler(this.CboClass_SelectedIndexChanged);
             this.dgvScoreList.AutoGenerateColumns = false;
+            DataGridViewStyle.DgvStyle1(this.dgvScoreList);
         }
 
         #region 成绩统计
         //下拉框IndexChange事件：动态筛选
         private void CboClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (this.cboClass.SelectedIndex == -1)
-            //{
-            //    MessageBox.Show("请选择班级！", "提示信息");
-            //    return;
-            //}
+            int classId = 0;
+            if (this.cboClass.SelectedIndex != -1)
+            {
+                classId = Convert.ToInt32(this.cboClass.SelectedValue);
+            }
             this.dgvScoreList.DataSource = null;
-            this.dgvScoreList.DataSource = scoreListService.QueryScoreList(Convert.ToInt32(this.cboClass.SelectedValue));
-            DataGridViewStyle.DgvStyle1(this.dgvScoreList);
+            this.dgvScoreList.DataSource = scoreListService.Query(classId);
+            //显示考试成绩统计信息
+            var item = scoreListService.QueryScoreInfo(classId);
+            this.lblAttendCount.Text = item["stuCount"];
+            this.lblCSharpAvg.Text = item["avgCharp"];
+            this.lblDBAvg.Text = item["avgDB"];
+            this.lblCount.Text = item["absentCount"];
+            //显示缺考人员列表
+
+            var absentInfo = scoreListService.QueryAbsentStudentList(classId);
+            this.lblList.Items.Clear();
+            if (absentInfo.Count == 0)
+            {
+                this.lblList.Items.Add("无缺考人员");
+            }
+            else
+            {
+                //两者取其一即可
+                this.lblList.Items.AddRange(absentInfo.ToArray());
+                //this.lblList.DataSource = absentInfo;
+            }
         }
 
         //统计全校成绩
         private void BtnStat_Click(object sender, EventArgs e)
         {
             this.cboClass.SelectedIndex = -1;
-            this.dgvScoreList.DataSource = null;
-            this.dgvScoreList.DataSource = scoreListService.QueryScoreList(0);
+            //this.dgvScoreList.DataSource = null;
+            //this.dgvScoreList.DataSource = scoreListService.QueryScoreList(0);
         }
 
         //行号展示
@@ -59,5 +79,42 @@ namespace SMDB
         }
         #endregion
 
+        /// <summary>
+        /// 解析组合属性
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvScoreList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.Value is Students)
+            {
+                e.Value = (e.Value as Students).StudentId;
+            }
+            if (e.ColumnIndex == 1 && e.Value is Students)
+            {
+                e.Value = (e.Value as Students).StudentName;
+            }
+            if (e.ColumnIndex == 2 && e.Value is Students)
+            {
+                e.Value = (e.Value as Students).Gender;
+            }
+
+            if (e.ColumnIndex == 3 && e.Value is StudentClass)
+            {
+                e.Value = (e.Value as StudentClass).ClassName;
+            }
+
+            if (e.ColumnIndex == 4 && e.Value is ScoreList)
+            {
+                e.Value = (e.Value as ScoreList).CSharp;
+            }
+
+            if (e.ColumnIndex == 5 && e.Value is ScoreList)
+            {
+                e.Value = (e.Value as ScoreList).SQLServerDB;
+            }
+
+
+        }
     }
 }

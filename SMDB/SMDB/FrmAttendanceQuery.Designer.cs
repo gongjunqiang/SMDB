@@ -250,6 +250,7 @@
             this.dgvStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudentList.Size = new System.Drawing.Size(960, 513);
             this.dgvStudentList.TabIndex = 20;
+            this.dgvStudentList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvStudentList_RowPostPaint);
             // 
             // btnQuery
             // 
@@ -262,6 +263,7 @@
             this.btnQuery.Text = "提交查询";
             this.btnQuery.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.BtnQuery_Click);
             // 
             // dtpTime
             // 

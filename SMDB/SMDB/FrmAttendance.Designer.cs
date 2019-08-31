@@ -239,6 +239,7 @@
             this.txtStuCardNo.Name = "txtStuCardNo";
             this.txtStuCardNo.Size = new System.Drawing.Size(140, 35);
             this.txtStuCardNo.TabIndex = 0;
+            this.txtStuCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtStuCardNo_KeyDown);
             // 
             // lblAbsenceCount
             // 
@@ -472,6 +473,7 @@
             this.btnClose.Text = "结束打卡";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // timer1
             // 
@@ -531,6 +533,7 @@
             this.dgvStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudentList.Size = new System.Drawing.Size(959, 316);
             this.dgvStudentList.TabIndex = 112;
+            this.dgvStudentList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvStudentList_RowPostPaint);
             // 
             // FrmAttendance
             // 
@@ -554,6 +557,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAttendance";
             this.Text = "[考勤打卡进行中...]";
+            this.Load += new System.EventHandler(this.FrmAttendance_Load);
             this.gp01.ResumeLayout(false);
             this.gp01.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbStu)).EndInit();

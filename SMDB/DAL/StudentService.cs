@@ -122,37 +122,7 @@ namespace DAL
         /// <returns></returns>
         public StudentExt GetStudebntByStudentId(int studentId)
         {
-            string sql = "select StudentId, StudentName, Gender, Birthday, StudentIdNo, CardNo, StuImage, PhoneNumber, StudentAddress, Students.ClassId,ClassName";
-            sql += " from Students inner join StudentClass on Students.ClassId=StudentClass.ClassId";
-            sql += " where StudentId=" + studentId;
-            StudentExt studentInfo = null;
-            try
-            {
-                SqlDataReader reader = SQLHelper.GetReader(sql);
-                if (reader.Read())
-                {
-                    studentInfo = new StudentExt
-                    {
-                        StudentId = Convert.ToInt32(reader["StudentId"]),
-                        StudentName = reader["StudentName"].ToString(),
-                        Gender = reader["Gender"].ToString(),
-                        Birthday = Convert.ToDateTime(reader["Birthday"]),
-                        StudentIdNo = reader["StudentIdNo"].ToString(),
-                        PhoneNumber = reader["PhoneNumber"].ToString(),
-                        CardNo = reader["CardNo"].ToString(),
-                        StuImage = reader["StuImage"]==null?"":reader["StuImage"].ToString(),
-                        StudentAddress = reader["StudentAddress"].ToString(),
-                        ClassId = Convert.ToInt32(reader["ClassId"]),
-                        ClassName = reader["ClassName"].ToString(),
-                    }; 
-                }
-                reader.Close();
-                return studentInfo;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("获取学生信息时数据库访问异常" + ex.Message);
-            }
+            return QueryStudent($" where StudentId={studentId}");
         }
         #endregion
 
@@ -279,5 +249,59 @@ namespace DAL
         }
         #endregion
 
+        #region 根据卡号获取学员信息
+        /// <summary>
+        /// 根据学员学号查询学员信息
+        /// </summary>
+        /// <param name="cardNo"></param>
+        /// <returns></returns>
+        public StudentExt GetStudebntByCardNo(string cardNo)
+        {
+            return QueryStudent($" where CardNo='{cardNo}'");
+        }
+        #endregion
+
+        #region privateMethod
+        /// <summary>
+        /// 查询学员信息
+        /// </summary>
+        /// <param name="whereSql"></param>
+        /// <returns></returns>
+        private StudentExt QueryStudent(string whereSql)
+        {
+            string sql = "select StudentId, StudentName, Gender, Birthday, StudentIdNo, CardNo, StuImage, PhoneNumber, StudentAddress, Students.ClassId,ClassName";
+            sql += " from Students inner join StudentClass on Students.ClassId=StudentClass.ClassId";
+            sql += whereSql;
+            StudentExt studentInfo = null;
+            try
+            {
+                SqlDataReader reader = SQLHelper.GetReader(sql);
+                if (reader.Read())
+                {
+                    studentInfo = new StudentExt
+                    {
+                        StudentId = Convert.ToInt32(reader["StudentId"]),
+                        StudentName = reader["StudentName"].ToString(),
+                        Gender = reader["Gender"].ToString(),
+                        Birthday = Convert.ToDateTime(reader["Birthday"]),
+                        StudentIdNo = reader["StudentIdNo"].ToString(),
+                        PhoneNumber = reader["PhoneNumber"].ToString(),
+                        CardNo = reader["CardNo"].ToString(),
+                        StuImage = reader["StuImage"] == null ? "" : reader["StuImage"].ToString(),
+                        StudentAddress = reader["StudentAddress"].ToString(),
+                        ClassId = Convert.ToInt32(reader["ClassId"]),
+                        ClassName = reader["ClassName"].ToString(),
+                    };
+                }
+                reader.Close();
+                return studentInfo;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("获取学生信息时数据库访问异常" + ex.Message);
+            }
+        }
+
+        #endregion
     }
 }
