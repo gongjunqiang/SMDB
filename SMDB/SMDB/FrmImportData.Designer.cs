@@ -179,6 +179,7 @@
             this.btnSaveToDB.Text = "保存到数据库 ";
             this.btnSaveToDB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveToDB.UseVisualStyleBackColor = true;
+            this.btnSaveToDB.Click += new System.EventHandler(this.BtnSaveToDB_Click);
             // 
             // btnChoseExcel
             // 
@@ -191,6 +192,7 @@
             this.btnChoseExcel.Text = "从外部Excel文件导入数据 ";
             this.btnChoseExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnChoseExcel.UseVisualStyleBackColor = true;
+            this.btnChoseExcel.Click += new System.EventHandler(this.BtnChoseExcel_Click);
             // 
             // FrmImportData
             // 
