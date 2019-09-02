@@ -116,14 +116,40 @@ namespace DAL
         /// <returns></returns>
         public static DataSet DataSet(string sql,string path)
         {
-            sql = string.Format(connString, path);
-            OleDbConnection conn = new OleDbConnection(sql);
+            var sql1 = sql;
+            var connString1 = string.Format(connString, path);
+            OleDbConnection conn = new OleDbConnection(connString);
+            conn.Open();
+            //DataTable sheetsName = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "Table" }); //得到所有sheet的名字
+            //string firstSheetName = sheetsName.Rows[2][0].ToString(); //得到第一个sheet的名字
+            //string sql2 = string.Format("SELECT * FROM [{0}]", firstSheetName);
+
+            DataTable activityDataTable = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+            if (activityDataTable != null)
+            {
+                //validate worksheet name.
+                //var itemsOfWorksheet = new List<SelectListItem>();
+                string worksheetName;
+                for (int cnt = 0; cnt < activityDataTable.Rows.Count; cnt++)
+                {
+                    worksheetName = activityDataTable.Rows[cnt]["TABLE_NAME"].ToString();
+
+                    if (worksheetName.Contains('\''))
+                    {
+                        worksheetName = worksheetName.Replace('\'', ' ').Trim();
+                    }
+                    //if (worksheetName.Trim().EndsWith("$"))
+                        //itemsOfWorksheet.Add(new SelectListItem { Text = worksheetName.TrimEnd('$'), Value = worksheetName });
+                }
+            }
+
             OleDbCommand cmd = new OleDbCommand(sql, conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataSet ds = new DataSet();
             try
             {
-                conn.Open();
+                //conn.Open();
                 da.Fill(ds);
                 return ds;
             }
