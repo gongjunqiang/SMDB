@@ -149,6 +149,46 @@ namespace DAL
             return serverTime;
         }
 
+        /// <summary>
+        /// 通过事务提交数据：多条sql语句
+        /// </summary>
+        /// <param name="sqlList"></param>
+        /// <returns></returns>
+        public static bool UpdateByTran(List<string> sqlList)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
 
+            try
+            {
+                conn.Open();
+                cmd.Transaction = conn.BeginTransaction();
+                foreach (var sql in sqlList)
+                {
+                    cmd.CommandText = sql;
+                    cmd.ExecuteNonQuery();
+                }
+                cmd.Transaction.Commit();//提交事务：将数据保存到数据库，提交成功则事务会自动清空
+                return true;
+            }
+            catch (Exception ex)
+            {
+                if (cmd.Transaction != null)
+                {
+                    cmd.Transaction.Rollback();//回滚事务，回滚成功事务也会自动清空
+                }
+
+                throw ex;
+            }
+            finally
+            {
+                if (cmd.Transaction != null)
+                {
+                    cmd.Transaction = null;//清空事务
+                }
+                conn.Close();
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace DAL
         //适合Excel2003版本
         //private static string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=Excel";
         //创建连接字符串(适用于excel2007以后的版本)  Microsoft.ACE.OLEDB.12.0
-        private static string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0";
+        private static string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='{0}';Extended Properties='Excel 12.0 Xml;HDR=Yes;IMEX=1;'";
 
         #region
         public static int Uplate(string sql)
@@ -116,40 +116,30 @@ namespace DAL
         /// <returns></returns>
         public static DataSet DataSet(string sql,string path)
         {
-            var sql1 = sql;
-            var connString1 = string.Format(connString, path);
-            OleDbConnection conn = new OleDbConnection(connString);
-            conn.Open();
-            //DataTable sheetsName = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "Table" }); //得到所有sheet的名字
-            //string firstSheetName = sheetsName.Rows[2][0].ToString(); //得到第一个sheet的名字
-            //string sql2 = string.Format("SELECT * FROM [{0}]", firstSheetName);
-
-            DataTable activityDataTable = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-
-            if (activityDataTable != null)
-            {
-                //validate worksheet name.
-                //var itemsOfWorksheet = new List<SelectListItem>();
-                string worksheetName;
-                for (int cnt = 0; cnt < activityDataTable.Rows.Count; cnt++)
-                {
-                    worksheetName = activityDataTable.Rows[cnt]["TABLE_NAME"].ToString();
-
-                    if (worksheetName.Contains('\''))
-                    {
-                        worksheetName = worksheetName.Replace('\'', ' ').Trim();
-                    }
-                    //if (worksheetName.Trim().EndsWith("$"))
-                        //itemsOfWorksheet.Add(new SelectListItem { Text = worksheetName.TrimEnd('$'), Value = worksheetName });
-                }
-            }
-
+            OleDbConnection conn = new OleDbConnection(string.Format(connString, path));
             OleDbCommand cmd = new OleDbCommand(sql, conn);
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataSet ds = new DataSet();
             try
             {
-                //conn.Open();
+                conn.Open();
+
+                #region 获取Excel表格的TableName
+                List<string> tableName = new List<string>();
+                DataTable dt = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                foreach (DataRow row in dt.Rows)
+                {
+                    string strSheetTableName = row["TABLE_NAME"].ToString();
+                    //过滤无效SheetName   
+                    if (strSheetTableName.Contains("$") && strSheetTableName.Replace("'", "").EndsWith("$"))
+                    {
+                        strSheetTableName = strSheetTableName.Replace("'", "");   //可能会有 '1X$' 出现
+                        strSheetTableName = strSheetTableName.Substring(0, strSheetTableName.Length - 1);
+                        tableName.Add(strSheetTableName);
+                    }
+                }
+                #endregion
+
                 da.Fill(ds);
                 return ds;
             }

@@ -20,7 +20,6 @@ namespace DAL
         /// <returns></returns>
         public List<StudentExt> GetStudentByExcel(string path)
         {
-
             List<StudentExt> studentList = new List<StudentExt>();
             string sql = "select * from [Student$]";
             try

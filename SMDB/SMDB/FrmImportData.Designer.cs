@@ -98,6 +98,7 @@
             this.dgvStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudentList.Size = new System.Drawing.Size(964, 592);
             this.dgvStudentList.TabIndex = 18;
+            this.dgvStudentList.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvStudentList_RowPostPaint);
             // 
             // StudentName
             // 

@@ -101,6 +101,7 @@
             this.btnPrint.Text = "打印当前学员信息 ";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
             // btnNameDESC
             // 
@@ -197,14 +198,14 @@
             // tsmidDeleteStu
             // 
             this.tsmidDeleteStu.Name = "tsmidDeleteStu";
-            this.tsmidDeleteStu.Size = new System.Drawing.Size(180, 22);
+            this.tsmidDeleteStu.Size = new System.Drawing.Size(144, 22);
             this.tsmidDeleteStu.Text = "删除学员(&D)";
             this.tsmidDeleteStu.Click += new System.EventHandler(this.TsmidDeleteStu_Click);
             // 
             // tsmiModifyStu
             // 
             this.tsmiModifyStu.Name = "tsmiModifyStu";
-            this.tsmiModifyStu.Size = new System.Drawing.Size(180, 22);
+            this.tsmiModifyStu.Size = new System.Drawing.Size(144, 22);
             this.tsmiModifyStu.Text = "修改学员(&M)";
             this.tsmiModifyStu.Click += new System.EventHandler(this.TsmiModifyStu_Click);
             // 
@@ -214,7 +215,7 @@
             this.tsmiModifyStu,
             this.tsmidDeleteStu});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 48);
             // 
             // ClassName
             // 

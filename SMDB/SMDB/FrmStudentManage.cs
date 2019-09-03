@@ -268,9 +268,18 @@ namespace SMDB
         {
             BtnDel_Click(null,null);
         }
+
         #endregion
 
+        #region 基于模板打印学员信息
 
+        
+
+        #endregion
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     #region 实现排序

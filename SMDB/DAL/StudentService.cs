@@ -51,7 +51,7 @@ namespace DAL
             sql += " values('{0}','{1}','{2}',{3},'{4}','{5}',{6},'{7}','{8}',{9});";
             sql += "select @@identity";
             sql = string.Format(sql, student.StudentName, student.Gender, student.Birthday, student.StudentIdNo, student.CardNo,
-                  student.StuImage, student.Age, student.PhoneNumber, student.StudentAddress, student.StudentId);
+                  student.StuImage, student.Age, student.PhoneNumber, student.StudentAddress, student.ClassId);
             //SqlParameter[] sqlParameters = new SqlParameter[]
             //{
             //    new SqlParameter("@StudentName",student.StudentName),
@@ -76,6 +76,31 @@ namespace DAL
                 throw new Exception("添加学员时数据库访问异常！"+ex.Message);
             }
         }
+
+        public bool Import(List<StudentExt> studentList)
+        {
+            string sql = "insert into Students(StudentName, Gender, Birthday, StudentIdNo, CardNo, Age, PhoneNumber, StudentAddress, ClassId)";
+            sql += " values('{0}','{1}','{2}',{3},'{4}',{5},'{6}','{7}',{8});";
+            List<string> sqlList = new List<string>();
+            foreach (var student in studentList)
+            {
+                string sql1 = string.Format(sql, student.StudentName, student.Gender, student.Birthday, student.StudentIdNo, student.CardNo,
+                    student.Age, student.PhoneNumber, student.StudentAddress, student.ClassId);
+                sqlList.Add(sql1);
+            }
+            //将Slq语句提交到数据库
+            try
+            {
+                //返回学号
+                return SQLHelper.UpdateByTran(sqlList);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         #endregion
 
         #region 学员信息查询
