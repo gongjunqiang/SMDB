@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Admins.cs" />
     <Compile Include="Attendance.cs" />
+    <Compile Include="Menulist.cs" />
     <Compile Include="QueryExt.cs" />
     <Compile Include="ScoreList.cs" />
     <Compile Include="StudentClass.cs" />

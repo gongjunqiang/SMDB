@@ -8,11 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using DAL;
+using Model;
+using System.Reflection;
+
 
 namespace SMDB
 {
     public partial class FrmMain : Form
     {
+        private MenulistService menulistService = new MenulistService();
+        private List<Menulist> menuList = null;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -25,6 +32,55 @@ namespace SMDB
 
             //显示版本号
             this.lblVersion.Text = "版本号：" + ConfigurationManager.AppSettings["persion"];
+
+            //加载菜单节点
+            LoadTvMenu();
+        }
+
+        #region 加载菜单节点
+        private void LoadTvMenu()
+        {
+            this.menuList = menulistService.GetAllMenu();//加载所有的菜单节点信息
+            //创建一个根节点
+            this.tvMenu.Nodes.Clear();
+            TreeNode rootNode = new TreeNode();
+            rootNode.Text = "学员管理系统";
+            rootNode.Tag = "";//根节点根据需要设置
+            rootNode.ImageIndex = 0;//设置根节点显示的图片
+            this.tvMenu.Nodes.Add(rootNode);//将根节点添加到treeview根节点
+            //基于递归添加子节点
+            CreateChildNode(rootNode,"0");
+            //this.tvMenu.Nodes[0].Expand();//将递归数一级目录展开
+            //this.tvMenu.ExpandAll();//展开所有的节点
+        }
+
+        #endregion
+        private void CreateChildNode(TreeNode parentNode,string parentId)
+        {
+            var nodeList = from menu in this.menuList
+                           where menu.ParentId.Equals(parentId)
+                           select menu;
+
+            //循环创建该节点的子节点
+            foreach (var menu in nodeList)
+            {
+                TreeNode childNode = new TreeNode();
+                childNode.Text = menu.MenuName;
+                childNode.Tag = menu.MenuCode;//根节点根据需要设置
+
+                if (parentId == "0")
+                {
+                    childNode.ImageIndex = 1;//设置节点显示的图片
+                }
+                else
+                {
+                    childNode.ImageIndex = 3;//设置节点显示的图片
+                }
+                parentNode.Nodes.Add(childNode);//在父节点加入该子节点
+                //递归电影实现子节点添加
+                CreateChildNode(childNode, menu.MenuId.ToString());
+            }
+           
         }
 
         #region 子窗体嵌入
@@ -146,6 +202,35 @@ namespace SMDB
             {
                 frmModifyPwd.Activate();//激活只能在最小化的时候起作用
                 frmModifyPwd.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        //选中节点发生的事件
+        private void TvMenu_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level == 2)
+            {
+                Form objForm = (Form)Assembly.Load("SMDB").CreateInstance("SMDB.Frm" + e.Node.Tag.ToString());
+                OpenFrm(objForm);
+            }
+            //e.Node.ImageIndex = 4;
+        }
+
+        //展开节点
+        private void TvMenu_AfterExpand(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level != 0)
+            {
+                e.Node.ImageIndex = 2;
+            }
+            
+        }
+        //折叠节点
+        private void TvMenu_AfterCollapse(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level != 0)
+            {
+                e.Node.ImageIndex = 1;
             }
         }
     }

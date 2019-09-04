@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,9 @@
             this.btnScoreAnalasys = new System.Windows.Forms.Button();
             this.btnImportStu = new System.Windows.Forms.Button();
             this.btnAddStu = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.tvMenu = new System.Windows.Forms.TreeView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -296,6 +299,8 @@
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.Controls.Add(this.label4);
+            this.splitContainer.Panel1.Controls.Add(this.tvMenu);
             this.splitContainer.Panel1.Controls.Add(this.label3);
             this.splitContainer.Panel1.Controls.Add(this.label2);
             this.splitContainer.Panel1.Controls.Add(this.label1);
@@ -311,7 +316,6 @@
             this.splitContainer.Panel1.Controls.Add(this.btnScoreAnalasys);
             this.splitContainer.Panel1.Controls.Add(this.btnImportStu);
             this.splitContainer.Panel1.Controls.Add(this.btnAddStu);
-            this.splitContainer.Panel1.Controls.Add(this.monthCalendar1);
             this.splitContainer.Size = new System.Drawing.Size(1264, 682);
             this.splitContainer.SplitterDistance = 246;
             this.splitContainer.TabIndex = 9;
@@ -508,11 +512,39 @@
             this.btnAddStu.UseVisualStyleBackColor = false;
             this.btnAddStu.Click += new System.EventHandler(this.BtnAddStu_Click);
             // 
-            // monthCalendar1
+            // tvMenu
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(13, 30);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
+            this.tvMenu.ImageIndex = 0;
+            this.tvMenu.ImageList = this.imageList1;
+            this.tvMenu.Location = new System.Drawing.Point(32, 40);
+            this.tvMenu.Name = "tvMenu";
+            this.tvMenu.SelectedImageIndex = 0;
+            this.tvMenu.Size = new System.Drawing.Size(181, 190);
+            this.tvMenu.TabIndex = 18;
+            this.tvMenu.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterCollapse);
+            this.tvMenu.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterExpand);
+            this.tvMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterSelect);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label4.Location = new System.Drawing.Point(37, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(169, 19);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "学员信息管理菜单";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "BOOKS01.ICO");
+            this.imageList1.Images.SetKeyName(1, "turn.BMP");
+            this.imageList1.Images.SetKeyName(2, "open.ico");
+            this.imageList1.Images.SetKeyName(3, "CustomerOrder.ico");
+            this.imageList1.Images.SetKeyName(4, "SysIco.ico");
             // 
             // FrmMain
             // 
@@ -535,6 +567,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -572,7 +605,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblCurrentUser;
         private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -588,5 +620,8 @@
         private System.Windows.Forms.Button btnScoreAnalasys;
         private System.Windows.Forms.Button btnImportStu;
         private System.Windows.Forms.Button btnAddStu;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TreeView tvMenu;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
