@@ -272,14 +272,41 @@ namespace SMDB
         #endregion
 
         #region 基于模板打印学员信息
-
-        
-
-        #endregion
         private void BtnPrint_Click(object sender, EventArgs e)
         {
+            if (this.dgvStudentList.RowCount == 0 || this.dgvStudentList.CurrentRow == null)
+            {
+                MessageBox.Show("请选择需要打印的学员！", "提示信息");
+                return;
+            }
+            //获取当前学员标号
+            var studentId = this.dgvStudentList.CurrentRow.Cells["StudentId"].Value.ToString();
+            //根据学号获取学员信息
+            StudentExt student = studentService.GetStudebntByStudentId(Convert.ToInt32(studentId));
+            if (student != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("是否确认打印该学员信息？", "询问提示",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            try
+            {
+                  PrintStudent.ExecPrint(student);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "提示信息");
+            }
+       
 
         }
+
+
+        #endregion
+
     }
 
     #region 实现排序

@@ -95,5 +95,23 @@ namespace SMDB
         {
             this.Close();
         }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            if (dgvScoreList.RowCount == 0)
+            {
+                MessageBox.Show("没有需要打印的成绩表！", "提示信息");
+                return;
+            }
+
+            try
+            {
+                DataExport.Export(this.dgvScoreList);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "提示信息");
+            }
+        }
     }
 }
