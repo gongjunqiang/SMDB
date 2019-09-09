@@ -58,6 +58,10 @@
       <Project>{b6b8ac5f-217c-4ef4-8e4b-51403daa9d56}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ORM.Core\ORM.Core.csproj">
+      <Project>{b1314404-544d-4289-b4db-314f77d6d34c}</Project>
+      <Name>ORM.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

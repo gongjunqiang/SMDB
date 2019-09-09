@@ -17,7 +17,7 @@ namespace SMDB
 
         private StudentClassService studentClassService = new StudentClassService();
         private StudentService studentService = new StudentService();
-        private List<StudentExt> studentList = new List<StudentExt>();
+        private List<Students> studentList = new List<Students>();
 
 
         public FrmAddStudent()
@@ -125,7 +125,7 @@ namespace SMDB
             #endregion
 
             #region 对象封装
-            StudentExt student = new StudentExt
+            Students student = new Students
             {
                 StudentName = this.txtStudentName.Text.Trim(),
                 Gender = this.rdoFemale.Checked ? "女" : "男",
@@ -137,7 +137,7 @@ namespace SMDB
                 PhoneNumber = this.txtPhoneNumber.Text.Trim(),
                 StudentAddress = this.txtAddress.Text.Trim(),
                 StudentId = Convert.ToInt32(this.cboClassName.SelectedValue),
-                ClassName = this.cboClassName.Text
+                ClassId = Convert.ToInt32(this.cboClassName.SelectedValue)
             };
             #endregion
 
@@ -145,7 +145,7 @@ namespace SMDB
             try
             {
                 var studenteId = studentService.AddNewStudent(student);
-                if (studenteId > 1)
+                if (studenteId == 1)
                 {
                     student.ClassId = studenteId;
                     studentList.Add(student);
