@@ -161,7 +161,7 @@ namespace ORM.Core
             try
             {
                 conn.Open();
-                cmd.Transaction = conn.BeginTransaction();
+                cmd.Transaction = conn.BeginTransaction();//开启事务
                 foreach (var sql in sqlList)
                 {
                     cmd.CommandText = sql;
