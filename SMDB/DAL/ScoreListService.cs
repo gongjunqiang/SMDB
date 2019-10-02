@@ -187,6 +187,68 @@ namespace DAL
             }
         }
 
+        public List<StudentExt> Query1(int classId,out Dictionary<string,string> dicParam,out List<string> absentList)
+        {
+            SqlParameter stuCount = new SqlParameter("@stuCount", SqlDbType.Int);
+            stuCount.Direction = ParameterDirection.Output;
+            SqlParameter absentCount = new SqlParameter("@absentCount", SqlDbType.Int);
+            absentCount.Direction = ParameterDirection.Output;
+            SqlParameter avgDB = new SqlParameter("@avgDB", SqlDbType.Int);
+            avgDB.Direction = ParameterDirection.Output;
+            SqlParameter avgCSharp = new SqlParameter("@avgCSharp", SqlDbType.Int);
+            avgCSharp.Direction = ParameterDirection.Output;
+            SqlParameter classid = new SqlParameter("@ClassId", classId);
+
+            //定义参数
+            SqlParameter[] sqlParameters = new SqlParameter[]
+            {
+                classid,stuCount,absentCount,avgDB,avgCSharp
+            };
+
+            List<StudentExt> scoreList = new List<StudentExt>();
+            List<string> absentlist = new List<string>();
+            try
+            {
+                SqlDataReader reader = SQLHelper.ExecuteReader("usp_Select", sqlParameters, true);
+                while (reader.Read())
+                {
+                    scoreList.Add(new StudentExt
+                    {
+                        StudentId = Convert.ToInt32(reader["StudentId"]),
+                        StudentName = reader["StudentName"].ToString(),
+                        ClassName = reader["StudentName"].ToString(),
+                        Gender = reader["StudentName"].ToString(),
+                        CSharp = Convert.ToInt32(reader["CSharp"]),
+                        SQLServerDB = Convert.ToInt32(reader["SQLServerDB"]),
+
+                    });
+                }
+
+                if (reader.NextResult())
+                {
+                    while (reader.Read())
+                    {
+                        absentlist.Add(reader["StudentName"].ToString());
+                    }
+                }
+                reader.Close();
+
+                Dictionary<string, string> outdicParam = new Dictionary<string, string>();
+                outdicParam["stuCount"] = stuCount.Value.ToString();
+                outdicParam["absentCount"] = absentCount.Value.ToString();
+                outdicParam["avgDB"] = avgDB.Value.ToString();
+                outdicParam["avgCSharp"] = avgCSharp.Value.ToString();
+                dicParam = outdicParam;
+                absentList = absentlist;
+                return scoreList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("数据库访问异常：" + ex.Message);
+            }
+        }
+
+
 
         #endregion
 

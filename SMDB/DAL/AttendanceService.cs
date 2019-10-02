@@ -83,7 +83,7 @@ namespace DAL
             string sql = $"insert into Attendance(CardNo) values('{cardNo}')";
             try
             {
-                SQLHelper.Update(sql);
+                SQLHelper.ExecuteNonQuery(sql,null);
                 return "success";
             }
             catch (Exception ex)

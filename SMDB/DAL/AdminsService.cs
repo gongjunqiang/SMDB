@@ -60,7 +60,7 @@ namespace DAL
             sql = string.Format(sql, admins.LoginPwd, admins.AdminName, admins.LoginId);
             try
             {
-                return SQLHelper.Update(sql);
+                return SQLHelper.ExecuteNonQuery(sql,null);
             }
             catch (Exception ex)
             {

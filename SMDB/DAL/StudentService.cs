@@ -97,7 +97,7 @@ namespace DAL
             try
             {
                 //返回学号
-                return SQLHelper.UpdateByTran(sqlList);
+                return SQLHelper.ExecuteTransaction(sqlList);
             }
             catch (Exception ex)
             {
@@ -183,11 +183,12 @@ namespace DAL
                 new SqlParameter("@PhoneNumber",student.PhoneNumber),
                 new SqlParameter("@StudentAddress",student.StudentAddress),
                 new SqlParameter("@ClassId",student.ClassId),
+                new SqlParameter("@ClassId",(object)0),
             };
 
             try
             {
-                return SQLHelper.Update(sql.ToString(), sqlParameters);
+                return SQLHelper.ExecuteNonQuery(sql.ToString(), sqlParameters);
             }
             catch (Exception ex)
             {
@@ -233,7 +234,7 @@ namespace DAL
             var sql = "delete from Students where StudentId=" + studentId;
             try
             {
-                return SQLHelper.Update(sql);
+                return SQLHelper.ExecuteNonQuery(sql,null);
             }
             catch (SqlException ex)
             {
@@ -263,7 +264,7 @@ namespace DAL
             var sql = "delete from Students where StudentId=" + student.StudentId;
             try
             {
-                return SQLHelper.Update(sql);
+                return SQLHelper.ExecuteNonQuery(sql,null);
             }
             catch (SqlException ex)
             {

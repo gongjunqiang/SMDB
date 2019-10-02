@@ -280,7 +280,7 @@
             // 
             // StudentId
             // 
-            this.StudentId.DataPropertyName = "StudentObj";
+            this.StudentId.DataPropertyName = "StudentId";
             this.StudentId.HeaderText = "学号";
             this.StudentId.Name = "StudentId";
             this.StudentId.ReadOnly = true;
