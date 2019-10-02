@@ -26,8 +26,8 @@ namespace SMDB
             //显示当前用户信息
             this.lblCurrentUser.Text = Program.admins.AdminName + "]";
             //显示主窗体背景
-            this.splitContainer.Panel2.BackgroundImage = Image.FromFile("mainbg.png");
-            this.splitContainer.Panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            //this.splitContainer.Panel2.BackgroundImage = Image.FromFile("mainbg.png");
+            //this.splitContainer.Panel2.BackgroundImageLayout = ImageLayout.Stretch;
             //权限限定
 
             //显示版本号

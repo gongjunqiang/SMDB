@@ -58,6 +58,9 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblCurrentUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tvMenu = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,9 +76,6 @@
             this.btnScoreAnalasys = new System.Windows.Forms.Button();
             this.btnImportStu = new System.Windows.Forms.Button();
             this.btnAddStu = new System.Windows.Forms.Button();
-            this.tvMenu = new System.Windows.Forms.TreeView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -316,9 +316,48 @@
             this.splitContainer.Panel1.Controls.Add(this.btnScoreAnalasys);
             this.splitContainer.Panel1.Controls.Add(this.btnImportStu);
             this.splitContainer.Panel1.Controls.Add(this.btnAddStu);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("splitContainer.Panel2.BackgroundImage")));
+            this.splitContainer.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.splitContainer.Size = new System.Drawing.Size(1264, 682);
             this.splitContainer.SplitterDistance = 246;
             this.splitContainer.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label4.Location = new System.Drawing.Point(37, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(169, 19);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "学员信息管理菜单";
+            // 
+            // tvMenu
+            // 
+            this.tvMenu.ImageIndex = 0;
+            this.tvMenu.ImageList = this.imageList1;
+            this.tvMenu.Location = new System.Drawing.Point(32, 40);
+            this.tvMenu.Name = "tvMenu";
+            this.tvMenu.SelectedImageIndex = 0;
+            this.tvMenu.Size = new System.Drawing.Size(181, 190);
+            this.tvMenu.TabIndex = 18;
+            this.tvMenu.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterCollapse);
+            this.tvMenu.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterExpand);
+            this.tvMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterSelect);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "BOOKS01.ICO");
+            this.imageList1.Images.SetKeyName(1, "turn.BMP");
+            this.imageList1.Images.SetKeyName(2, "open.ico");
+            this.imageList1.Images.SetKeyName(3, "CustomerOrder.ico");
+            this.imageList1.Images.SetKeyName(4, "SysIco.ico");
             // 
             // label3
             // 
@@ -511,40 +550,6 @@
             this.btnAddStu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddStu.UseVisualStyleBackColor = false;
             this.btnAddStu.Click += new System.EventHandler(this.BtnAddStu_Click);
-            // 
-            // tvMenu
-            // 
-            this.tvMenu.ImageIndex = 0;
-            this.tvMenu.ImageList = this.imageList1;
-            this.tvMenu.Location = new System.Drawing.Point(32, 40);
-            this.tvMenu.Name = "tvMenu";
-            this.tvMenu.SelectedImageIndex = 0;
-            this.tvMenu.Size = new System.Drawing.Size(181, 190);
-            this.tvMenu.TabIndex = 18;
-            this.tvMenu.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterCollapse);
-            this.tvMenu.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterExpand);
-            this.tvMenu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvMenu_AfterSelect);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(37, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(169, 19);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "学员信息管理菜单";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "BOOKS01.ICO");
-            this.imageList1.Images.SetKeyName(1, "turn.BMP");
-            this.imageList1.Images.SetKeyName(2, "open.ico");
-            this.imageList1.Images.SetKeyName(3, "CustomerOrder.ico");
-            this.imageList1.Images.SetKeyName(4, "SysIco.ico");
             // 
             // FrmMain
             // 
