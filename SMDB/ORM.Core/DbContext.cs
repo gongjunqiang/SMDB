@@ -163,7 +163,6 @@ namespace ORM.Core
         {
             //【1】获取当前查询的所有列的名称
             var fieldCount = reader.FieldCount;
-
             List<string> fieldNames = new List<string>();
             for (int i = 0; i < fieldCount; i++)
             {
